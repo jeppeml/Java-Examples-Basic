@@ -48,7 +48,7 @@ public class TextFile extends AbstractFile {
                 String[] fields = line.split(",");
                 int id = Integer.parseInt(fields[0].trim());
                 if (id != departmentId) {
-                    newFileString += line;
+                    newFileString += line + "\n";
                 }
             }
         }

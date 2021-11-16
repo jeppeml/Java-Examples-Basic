@@ -6,7 +6,7 @@
 package graphicaldepartmentwithpersistance.GUI.Controller;
 
 import graphicaldepartmentwithpersistance.BE.Department;
-import graphicaldepartmentwithpersistance.util.FileTypeFactory.FileType;
+import graphicaldepartmentwithpersistance.util.FileTypeFactory.PersistanceType;
 import graphicaldepartmentwithpersistance.GUI.Model.DepartmentModel;
 import graphicaldepartmentwithpersistance.util.DepartmentException;
 import java.net.URL;
@@ -42,7 +42,7 @@ public class MainController implements Initializable {
     @FXML
     private TextField textName;
     @FXML
-    private ComboBox<FileType> comboFileType;
+    private ComboBox<PersistanceType> comboFileType;
 
     //private final DepartmentManager manager = new DepartmentManager();
     private DepartmentModel model;
@@ -60,15 +60,8 @@ public class MainController implements Initializable {
         columnId.setCellValueFactory(
                 new PropertyValueFactory("id"));
 
-        comboFileType.setItems(FXCollections.observableArrayList(FileType.values()));
+        comboFileType.setItems(FXCollections.observableArrayList(PersistanceType.values()));
         comboFileType.getSelectionModel().selectFirst();
-
-        try {
-            model.setFileType(comboFileType.getSelectionModel().getSelectedItem());
-        }
-        catch (DepartmentException ex) {
-            showAndLogError(ex);
-        }
 
         tableDepartment.setItems(model.getDepartmentList());
     }
@@ -118,6 +111,29 @@ public class MainController implements Initializable {
                 ex.getMessage()
                 + String.format("%n")
                 + "See error log for technical details."
+        );
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void clickDeleteDepartment(ActionEvent event) {
+        Department selected = 
+                tableDepartment.getSelectionModel().getSelectedItem();
+        try {
+            model.delete(selected);
+        }
+        catch (DepartmentException ex) {
+            showAndLogError(ex);
+        }
+    }
+
+    @FXML
+    private void clickGetDepartment(ActionEvent event) {
+        Department selected = 
+                tableDepartment.getSelectionModel().getSelectedItem();
+        
+        Alert alert = new Alert(AlertType.INFORMATION,
+                selected.toString()
         );
         alert.showAndWait();
     }

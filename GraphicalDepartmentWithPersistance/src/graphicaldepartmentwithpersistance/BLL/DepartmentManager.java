@@ -7,7 +7,7 @@ package graphicaldepartmentwithpersistance.BLL;
 
 import graphicaldepartmentwithpersistance.BE.Department;
 import graphicaldepartmentwithpersistance.DAL.DepartmentPersistanceManager;
-import graphicaldepartmentwithpersistance.util.FileTypeFactory.FileType;
+import graphicaldepartmentwithpersistance.util.FileTypeFactory.PersistanceType;
 import graphicaldepartmentwithpersistance.util.DepartmentException;
 import java.io.IOException;
 import java.util.List;
@@ -25,7 +25,7 @@ public class DepartmentManager {
         dpm = new DepartmentPersistanceManager(FILE_NAME);
     }
 
-    public void setFileType(FileType type) throws DepartmentException {
+    public void setFileType(PersistanceType type) throws DepartmentException {
         dpm.setFileType(type);
     }
 

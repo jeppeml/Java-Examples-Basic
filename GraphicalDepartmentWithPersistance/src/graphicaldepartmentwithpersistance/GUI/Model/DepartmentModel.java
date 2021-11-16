@@ -7,7 +7,7 @@ package graphicaldepartmentwithpersistance.GUI.Model;
 
 import graphicaldepartmentwithpersistance.BE.Department;
 import graphicaldepartmentwithpersistance.BLL.DepartmentManager;
-import graphicaldepartmentwithpersistance.util.FileTypeFactory.FileType;
+import graphicaldepartmentwithpersistance.util.FileTypeFactory.PersistanceType;
 import graphicaldepartmentwithpersistance.util.DepartmentException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,11 +41,16 @@ public class DepartmentModel {
         setDepartments(manager.getAll());
     }
 
-    public void setFileType(FileType selectedItem) throws DepartmentException {
+    public void setFileType(PersistanceType selectedItem) throws DepartmentException {
         manager.setFileType(selectedItem);
     }
 
     public void addAll(ObservableList<Department> items) throws DepartmentException {
         manager.addAll(new ArrayList(deptList));
+    }
+
+    public void delete(Department selected) throws DepartmentException {
+        manager.delete(selected);
+        deptList.remove(selected);
     }
 }

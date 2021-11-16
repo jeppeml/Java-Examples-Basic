@@ -24,5 +24,7 @@
       <ComboBox fx:id="comboFileType" layoutX="23.0" layoutY="417.0" onAction="#comboSelectFileType" prefWidth="150.0" />
       <Button layoutX="125.0" layoutY="384.0" mnemonicParsing="false" onAction="#clickSave" text="Save" />
       <Button layoutX="24.0" layoutY="383.0" mnemonicParsing="false" onAction="#clickLoad" text="Load" />
+      <Button layoutX="405.0" layoutY="451.0" mnemonicParsing="false" onAction="#clickDeleteDepartment" text="Delete Department" />
+      <Button layoutX="193.0" layoutY="451.0" mnemonicParsing="false" onAction="#clickGetDepartment" text="Get department" />
    </children>
 </AnchorPane>

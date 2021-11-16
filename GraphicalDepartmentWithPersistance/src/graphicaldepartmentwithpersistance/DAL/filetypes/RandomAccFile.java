@@ -16,13 +16,13 @@ import java.util.List;
  *
  * @author jeppjleemoritzled
  */
-public class DepartmentPersistanceRandomTextFile extends AbstractFile {
+public class RandomAccFile extends AbstractFile {
 
     private static final int ID_SIZE = Integer.BYTES;
     private static final int NAME_SIZE = 50;
     private static final int RECORD_SIZE = ID_SIZE + NAME_SIZE;
 
-    public DepartmentPersistanceRandomTextFile(String fileName) {
+    public RandomAccFile(String fileName) {
         super(fileName + ".dat");
     }
 

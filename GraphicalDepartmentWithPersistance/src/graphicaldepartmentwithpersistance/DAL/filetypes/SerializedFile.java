@@ -42,19 +42,25 @@ public class SerializedFile extends AbstractFile {
 
     @Override
     public void deleteById(int id) throws IOException {
-        Department d = getById(id);
-        getAll().remove(d);
-    }
-
-    @Override
-    public Department getById(int departmentId) throws IOException {
         List<Department> allDepts = getAll();
-        for (Department dept : allDepts) {
+        Department d = getByIdFromList(id,allDepts);
+        allDepts.remove(d);
+        saveAll(allDepts);
+    }
+    
+    private Department getByIdFromList(
+            int departmentId, List<Department> departments){
+        for (Department dept : departments) {
             if (dept.getId() == departmentId) {
                 return dept;
             }
         }
         return null;
+    }
+
+    @Override
+    public Department getById(int departmentId) throws IOException {
+        return getByIdFromList(departmentId, getAll());
     }
 
     @Override

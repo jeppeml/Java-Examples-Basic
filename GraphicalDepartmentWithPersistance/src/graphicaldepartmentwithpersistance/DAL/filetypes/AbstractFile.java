@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author jeppjleemoritzled
  */
-public abstract class AbstractFile {
+public abstract class AbstractFile implements DALReadWrite{
 
     protected final String fileName;
 
@@ -27,14 +27,4 @@ public abstract class AbstractFile {
         RandomAccessFile raf = new RandomAccessFile(fileName, "rw");
         raf.setLength(0);
     }
-
-    public abstract void saveAll(List<Department> depts) throws IOException;
-
-    public abstract void addDepartment(Department d) throws IOException;
-
-    public abstract void deleteById(int id) throws IOException;
-
-    public abstract Department getById(int departmentId) throws IOException;
-
-    public abstract List<Department> getAll() throws IOException;
 }

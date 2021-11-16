@@ -8,8 +8,8 @@ package graphicaldepartmentwithpersistance.DAL;
 import graphicaldepartmentwithpersistance.util.FileTypeFactory;
 import graphicaldepartmentwithpersistance.DAL.filetypes.*;
 import graphicaldepartmentwithpersistance.BE.*;
-import graphicaldepartmentwithpersistance.util.FileTypeFactory.FileType;
-import static graphicaldepartmentwithpersistance.util.FileTypeFactory.FileType.*;
+import graphicaldepartmentwithpersistance.util.FileTypeFactory.PersistanceType;
+import static graphicaldepartmentwithpersistance.util.FileTypeFactory.PersistanceType.*;
 import graphicaldepartmentwithpersistance.util.DepartmentException;
 import java.io.IOException;
 import java.util.List;
@@ -20,10 +20,10 @@ import java.util.List;
  */
 public final class DepartmentPersistanceManager {
 
-    private AbstractFile fileHandler;
+    private DALReadWrite fileHandler;
     private String fileName;
 
-    public void setFileType(FileType type) throws DepartmentException {
+    public void setFileType(PersistanceType type) throws DepartmentException {
         fileHandler = FileTypeFactory.getInstance().create(
                 type, fileName);
     }
@@ -32,7 +32,7 @@ public final class DepartmentPersistanceManager {
         this(fileName, SERIALIZED);
     }
 
-    public DepartmentPersistanceManager(String fileName, FileType type) throws DepartmentException {
+    public DepartmentPersistanceManager(String fileName, PersistanceType type) throws DepartmentException {
         this.fileName = fileName;
         setFileType(type);
     }
